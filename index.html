@@ -391,4 +391,35 @@
     } else if (need >= 75) {
       needNote.textContent = "Solid — you’ll need strong Distinction-range marks on average.";
     } else if (need >= 65) {
-      needNote.textContent = "Doable — keep steady Credit+ marks and you’ll be on trac
+      needNote.textContent = "Doable — keep steady Credit+ marks and you’ll be on track.";
+    } else {
+      needNote.textContent = "Comfortable — your target is within reach with consistent passes.";
+    }
+  }
+
+  function addRows(n = 1) {
+    for (let i = 0; i < n; i++) rowsEl.appendChild(makeRow());
+    recalc();
+  }
+
+  function resetAll() {
+    rowsEl.innerHTML = "";
+    targetWamEl.value = "";
+    futureCpEl.value = "";
+    roundingEl.value = "1";
+    addRows(6);
+  }
+
+  addRowBtn.addEventListener("click", () => addRows(1));
+  addSixBtn.addEventListener("click", () => addRows(6));
+  resetBtn.addEventListener("click", resetAll);
+
+  targetWamEl.addEventListener("input", recalc);
+  futureCpEl.addEventListener("input", recalc);
+  roundingEl.addEventListener("input", recalc);
+
+  // Start with 6 rows
+  addRows(6);
+</script>
+</body>
+</html>
